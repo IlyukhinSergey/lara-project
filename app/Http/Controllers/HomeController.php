@@ -27,8 +27,8 @@ class HomeController extends Controller
     public function index()
     {
         return view('home', [
-            'goods' => Good::all(),
-            ]);
+            'goods' => Good::query()->orderBy('id', 'DESC')->paginate(6),
+        ]);
     }
 
 }
