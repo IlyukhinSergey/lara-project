@@ -4,7 +4,12 @@
     <div class="content-middle">
         <div class="content-head__container">
             <div class="content-head__title-wrap">
-                <div class="content-head__title-wrap__title bcg-title">Последние товары</div>
+                <?php /** @var \App\Models\Category $currentCategory */ ?>
+                @if(isset($currentCategory))
+                    <div class="content-head__title-wrap__title bcg-title">Товары в категории {{ $currentCategory->title }}</div>
+                @else
+                    <div class="content-head__title-wrap__title bcg-title">Последние товары</div>
+                @endif
             </div>
             <div class="content-head__search-block">
                 <div class="search-container">

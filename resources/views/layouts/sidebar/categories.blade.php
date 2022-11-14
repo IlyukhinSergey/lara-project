@@ -4,7 +4,11 @@
         <?php /** @var \App\Models\Category $category */?>
         <ul class="sidebar-category">
             @foreach($categories as $category)
-            <li class="sidebar-category__item"><a href="{{ route('category', $category->id) }}" class="sidebar-category__item__link">{{ $category->title }}</a></li>
+            <li class="sidebar-category__item">
+                @if(isset($currentCategory) && $currentCategory->id == $category->id)
+                    &nbsp;&nbsp;&nbsp;
+                @endif
+                <a href="{{ route('category', $category->id) }}" class="sidebar-category__item__link">{{ $category->title }}</a></li>
             @endforeach
         </ul>
     </div>
