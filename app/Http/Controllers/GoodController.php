@@ -10,7 +10,8 @@ class GoodController extends Controller
 
     public function good(int $id)
     {
-        $good = Good::query()->find($id);
+        /** @var \App\Models\Good $good */
+        $good = Good::query()->with('category')->find($id);
         return view('good', ['good' => $good]);
     }
 

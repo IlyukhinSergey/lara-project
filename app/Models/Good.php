@@ -15,13 +15,17 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read $description
  * @property-read $category_id
  * @property-read $price
- * @property-read $created_at
- * @property-read $updated_at
+ * @property-read Category $category
  */
 class Good extends Model
 {
 
     use HasFactory;
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 
     public function getImageId()
     {

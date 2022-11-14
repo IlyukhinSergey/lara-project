@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <?php /** @var \App\Models\Good $good */?>
+    <?php /** @var \App\Models\Good $good
+     * @var \App\Models\Category $title*/?>
     <div class="content-middle">
         <div class="content-head__container">
             <div class="content-head__title-wrap">
-                <div class="content-head__title-wrap__title bcg-title">{{$good->title}}</div>
+                <div class="content-head__title-wrap__title bcg-title">{{$good->title}} из категории {{$good->category->title}}</div>
             </div>
             <div class="content-head__search-block">
                 <div class="search-container">
