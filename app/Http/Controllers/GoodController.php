@@ -9,6 +9,16 @@ use Illuminate\Http\Request;
 class GoodController extends Controller
 {
 
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function good(int $id)
     {
         /** @var \App\Models\Good $good */
@@ -18,12 +28,11 @@ class GoodController extends Controller
 
     public function category(int $id)
     {
-        /** @var \App\Models\Category $category */
-        $category = Category::with('goods')->find($id);
+        $goods = Good::query()->where('category_id', '=', $id)->paginate(6);
 
         return view('home',
             [
-                'goods' => $category->goods,
+                'goods' => $goods,
                 'categories' => Category::all(),
                 'currentCategory' => Category::find($id),
             ]);

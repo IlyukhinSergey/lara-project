@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('order_goods', function (Blueprint $table) {
             $table->id();
             $table->integer('order_id');
-            $table->integer('user_id');
+            $table->integer('good_id');
             $table->index('order_id');
             $table->timestamps();
         });
